@@ -75,6 +75,15 @@ ifeq ($(TARGET_ARCH),arm)
 	android/libc/arch-arm/syscalls/swapoff.S \
 	android/libc/arch-arm/syscalls/sysinfo.S
 endif
+ifeq ($(TARGET_ARCH),x86)
+     BUSYBOX_SRC_FILES += \
+     android/libc/arch-x86/syscalls/adjtimex.S \
+     android/libc/arch-x86/syscalls/getsid.S \
+     android/libc/arch-x86/syscalls/stime.S \
+     android/libc/arch-x86/syscalls/swapon.S \
+     android/libc/arch-x86/syscalls/swapoff.S \
+     android/libc/arch-x86/syscalls/sysinfo.S
+endif
 
 ifeq ($(TARGET_ARCH),mips)
 	BUSYBOX_SRC_FILES += \
@@ -101,6 +110,7 @@ BUSYBOX_CFLAGS = \
 	-DNDEBUG \
 	-DANDROID \
 	-fno-strict-aliasing \
+	-fno-builtin-stpcpy \
 	-include include-$(BUSYBOX_CONFIG)/autoconf.h \
 	-D'CONFIG_DEFAULT_MODULES_DIR="$(KERNEL_MODULES_DIR)"' \
 	-D'BB_VER="$(strip $(shell $(SUBMAKE) kernelversion)) $(BUSYBOX_SUFFIX)"' -DBB_BT=AUTOCONF_TIMESTAMP
