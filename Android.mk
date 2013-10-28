@@ -32,6 +32,9 @@ endif
 ifeq ($(TARGET_ARCH),x86)
 	BUSYBOX_CROSS_COMPILER_PREFIX := "i686-linux-android-"
 endif
+ifeq ($(TARGET_ARCH),x86_64)
+	BUSYBOX_CROSS_COMPILER_PREFIX := "x86_64-linux-android-"
+endif
 
 # Each profile require a compressed usage/config, outside the source tree for git history
 # We keep the uncompressed headers in local include-<profile> to track config changes.
@@ -84,6 +87,16 @@ ifeq ($(TARGET_ARCH),arm)
 	android/libc/arch-arm/syscalls/swapon.S \
 	android/libc/arch-arm/syscalls/swapoff.S \
 	android/libc/arch-arm/syscalls/sysinfo.S
+endif
+
+ifeq ($(TARGET_ARCH),x86_64)
+	BUSYBOX_SRC_FILES += \
+	android/libc/arch-x86_64/syscalls/adjtimex.S \
+	android/libc/arch-x86_64/syscalls/getsid.S \
+	android/libc/arch-x86_64/syscalls/stime.S \
+	android/libc/arch-x86_64/syscalls/swapon.S \
+	android/libc/arch-x86_64/syscalls/swapoff.S \
+	android/libc/arch-x86_64/syscalls/sysinfo.S
 endif
 
 ifeq ($(TARGET_ARCH),x86)
