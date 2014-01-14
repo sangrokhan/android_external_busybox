@@ -31,9 +31,10 @@
 //usage:     "\n	-x FILE	Exclude FILEs"
 //usage:     "\n	-d DIR	Extract into DIR"
 
+
 #include "libbb.h"
 #include "bb_archive.h"
-
+#define  ENABLE_DESKTOP 1
 enum {
 #if BB_BIG_ENDIAN
 	ZIP_FILEHEADER_MAGIC = 0x504b0304,
