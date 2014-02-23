@@ -24,7 +24,7 @@ include $(BUILD_STATIC_LIBRARY)
 
 LOCAL_PATH := $(BB_PATH)
 include $(CLEAR_VARS)
-
+LOCAL_NO_2ND_ARCH := true
 # Explicitly set an architecture specific CONFIG_CROSS_COMPILER_PREFIX
 ifeq ($(TARGET_ARCH),arm)
 	BUSYBOX_CROSS_COMPILER_PREFIX := "arm-eabi-"
@@ -71,7 +71,7 @@ include $(BUILD_STATIC_LIBRARY)
 
 LOCAL_PATH := $(BB_PATH)
 include $(CLEAR_VARS)
-
+LOCAL_NO_2ND_ARCH := true
 KERNEL_MODULES_DIR ?= /system/lib/modules
 
 SUBMAKE := make -s -C $(BB_PATH) CC=$(CC)
@@ -170,7 +170,7 @@ include $(BUILD_STATIC_LIBRARY)
 
 LOCAL_PATH := $(BB_PATH)
 include $(CLEAR_VARS)
-
+LOCAL_NO_2ND_ARCH := true
 BUSYBOX_CONFIG:=full
 BUSYBOX_SUFFIX:=bionic
 LOCAL_SRC_FILES := $(BUSYBOX_SRC_FILES)
@@ -211,7 +211,7 @@ ALL_MODULES.$(LOCAL_MODULE).INSTALLED := \
 
 LOCAL_PATH := $(BB_PATH)
 include $(CLEAR_VARS)
-
+LOCAL_NO_2ND_ARCH := true
 BUSYBOX_CONFIG:=full
 BUSYBOX_SUFFIX:=static
 LOCAL_SRC_FILES := $(BUSYBOX_SRC_FILES)

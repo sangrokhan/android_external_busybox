@@ -59,9 +59,9 @@ const char *hasmntopt(const struct mntent *, const char *);
 #define MNTOPT_NOAUTO "noauto"
 
 /* bionic's vfork is rather broken; for now a terrible bandaid: */
-#define vfork fork
-
+//#define vfork fork
 #define _SOCKLEN_T_DECLARED
+#ifndef _SOCKLEN_T_DECLARED
 typedef int socklen_t;
-
+#endif
 #endif
