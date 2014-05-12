@@ -33,7 +33,11 @@
 # ifdef ENABLE_FEATURE_IPV6
 #  include <netinet/in6.h>
 # endif
+#ifdef BIONIC_MASTER
+# include <arpa/nameser.h>
+#else 
 # include <arpa_nameser.h>
+#endif
 # include <resolv_private.h>
 # include <resolv.h>
 # undef _res

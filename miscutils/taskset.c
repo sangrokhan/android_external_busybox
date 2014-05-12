@@ -26,6 +26,9 @@
 #ifdef BIONIC_ICS
 #define _GNU_SOURCE 1
 #endif
+#ifdef BIONIC_MASTER
+#define _GNU_SOURCE 1
+#endif
 
 #include <sched.h>
 #include "libbb.h"
