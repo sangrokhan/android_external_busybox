@@ -1,12 +1,14 @@
 LOCAL_PATH := $(call my-dir)
 BB_PATH := $(LOCAL_PATH)
 
-# Bionic Branches Switches (CM7/AOSP/ICS)
-BIONIC_ICS := true
+# Bionic Branches Switches (BIONIC_MASTER)
+# Master branch!! .... fuckers
+BIONIC_MASTER := true
 
 
 # Make a static library for regex.
 include $(CLEAR_VARS)
+
 LOCAL_SRC_FILES := android/regex/regex.c
 LOCAL_C_INCLUDES := $(BB_PATH)/android/regex
 LOCAL_CFLAGS := -Wno-sign-compare
@@ -15,6 +17,7 @@ include $(BUILD_STATIC_LIBRARY)
 
 # Make a static library for RPC library (coming from uClibc).
 include $(CLEAR_VARS)
+
 LOCAL_SRC_FILES := $(shell cat $(BB_PATH)/android/librpc.sources)
 LOCAL_C_INCLUDES := $(BB_PATH)/android/librpc
 LOCAL_MODULE := libuclibcrpc
@@ -141,6 +144,15 @@ BUSYBOX_CFLAGS = \
 # to handle differences in ICS (ipv6)
 ifeq ($(BIONIC_ICS),true)
 BUSYBOX_CFLAGS += -DBIONIC_ICS
+endif
+# to handle differences in ICS (ipv6)
+ifeq ($(BIONIC_KK),true)
+BUSYBOX_CFLAGS += -DBIONIC_KK
+endif
+
+ifeq ($(BIONIC_MASTER),true)
+BUSYBOX_CFLAGS += -DBIONIC_MASTER
+BUSYBOX_C_INCLUDES += bionic/libc/dns/include
 endif
 
 
