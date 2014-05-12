@@ -163,3 +163,6 @@
 /bin/xzcat
 /bin/yes
 /bin/zcat
+/bin/openvt
+/bin/chvt
+/bin/fgconsole
