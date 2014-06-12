@@ -225,3 +225,7 @@
 /bin/xzcat
 /bin/yes
 /bin/zcat
+/bin/chvt
+/bin/openvt
+/bin/fgconsole
+/bin/deallocvt
